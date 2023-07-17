@@ -1,5 +1,4 @@
 import os
-import cv2
 import abc
 import math
 import numpy as np

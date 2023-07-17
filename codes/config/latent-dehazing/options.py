@@ -7,12 +7,14 @@ import math
 import yaml
 
 try:
-    sys.path.append("../../")
-    from utils import OrderedYaml
+    sys.path.insert(0, os.path.dirname(os.path.dirname(
+        os.path.dirname(os.path.realpath(__file__)))))
+    print(sys.path)
+    from utils import file_utils
 except ImportError:
     pass
 
-Loader, Dumper = OrderedYaml()
+Loader, Dumper = file_utils.OrderedYaml()
 
 
 def parse(opt_path, is_train=True):
@@ -39,7 +41,7 @@ def parse(opt_path, is_train=True):
         phase = phase.split("_")[0]
         dataset["phase"] = phase
         dataset["scale"] = scale
-        
+
         is_lmdb = False
         if dataset.get("dataroot_GT", None) is not None:
             dataset["dataroot_GT"] = osp.expanduser(dataset["dataroot_GT"])
@@ -71,7 +73,8 @@ def parse(opt_path, is_train=True):
         )
         opt["path"]["experiments_root"] = experiments_root
         opt["path"]["models"] = osp.join(experiments_root, "models")
-        opt["path"]["training_state"] = osp.join(experiments_root, "training_state")
+        opt["path"]["training_state"] = osp.join(
+            experiments_root, "training_state")
         opt["path"]["log"] = experiments_root
         opt["path"]["val_images"] = osp.join(experiments_root, "val_images")
 
@@ -134,9 +137,11 @@ def check_resume(opt, resume_iter):
         opt["path"]["pretrain_model_G"] = osp.join(
             opt["path"]["models"], "{}_G.pth".format(resume_iter)
         )
-        logger.info("Set [pretrain_model_G] to " + opt["path"]["pretrain_model_G"])
+        logger.info("Set [pretrain_model_G] to " +
+                    opt["path"]["pretrain_model_G"])
         if "gan" in opt["model"]:
             opt["path"]["pretrain_model_D"] = osp.join(
                 opt["path"]["models"], "{}_D.pth".format(resume_iter)
             )
-            logger.info("Set [pretrain_model_D] to " + opt["path"]["pretrain_model_D"])
+            logger.info("Set [pretrain_model_D] to " +
+                        opt["path"]["pretrain_model_D"])

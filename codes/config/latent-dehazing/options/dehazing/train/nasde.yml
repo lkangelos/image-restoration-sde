@@ -25,8 +25,8 @@ datasets:
   train:
     name: Train_Dataset
     mode: LQGT
-    dataroot_GT: /home/x_ziwlu/datasets/ntire2023/dehazing/train/GT_sub
-    dataroot_LQ: /home/x_ziwlu/datasets/ntire2023/dehazing/train/LQ_sub
+    dataroot_GT: /home/louanqi/pycharmp/data/ntire2023/dehazing/train/GT
+    dataroot_LQ: /home/louanqi/pycharmp/data/ntire2023/dehazing/train/LQ
 
     use_shuffle: true
     n_workers: 8  # per GPU
@@ -40,8 +40,8 @@ datasets:
   val:
     name: Val_Dataset
     mode: LQGT
-    dataroot_GT: /home/x_ziwlu/datasets/ntire2023/dehazing/val/GT
-    dataroot_LQ: /home/x_ziwlu/datasets/ntire2023/dehazing/val/LQ
+    dataroot_GT: /home/louanqi/pycharmp/data/ntire2023/dehazing/val/GT
+    dataroot_LQ: /home/louanqi/pycharmp/data/ntire2023/dehazing/val/LQ
 
 
 #### network structures
@@ -68,7 +68,7 @@ path:
   pretrain_model_G: ~
   strict_load: true
   resume_state: ~
-  pretrain_model_L: pretrained_models/latent-dehazing.pth
+  pretrain_model_L: /home/louanqi/pycharmp/image-restoration-sde/codes/config/latent-dehazing/pretrained_models/latent-dehazing.pth
 
 #### training settings: learning rate scheme, loss
 train:

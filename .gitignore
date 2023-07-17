@@ -1,3 +1,11 @@
+.idea/
+*__pycache__*
 .DS_Store
-sftp-config.json
-
+*.py[cod]
+*.xml
+venv/
+results/
+*.log
+.vscode/
+log
+experiments/

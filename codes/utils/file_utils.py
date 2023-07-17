@@ -8,7 +8,6 @@ from collections import OrderedDict
 from datetime import datetime
 from shutil import get_terminal_size
 
-import cv2
 import numpy as np
 import torch
 import torch.nn as nn
