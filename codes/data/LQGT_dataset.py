@@ -7,7 +7,8 @@ import lmdb
 import numpy as np
 import torch
 import torch.utils.data as data
-
+cv2.setNumThreads(0)
+cv2.ocl.setUseOpenCL(False)
 try:
     sys.path.append("..")
     import data.util as util
