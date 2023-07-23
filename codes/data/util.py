@@ -7,6 +7,9 @@ import cv2
 import numpy as np
 import torch
 
+cv2.setNumThreads(0)
+cv2.ocl.setUseOpenCL(False)
+
 # Files & IO
 
 IMG_EXTENSIONS = ['.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG', '.ppm', '.PPM', '.bmp', '.BMP', 'tif']

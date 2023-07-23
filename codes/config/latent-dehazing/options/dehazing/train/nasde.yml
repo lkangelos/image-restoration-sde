@@ -3,7 +3,7 @@ name: latent-reffusion-dehazing
 use_tb_logger: true
 model: latent_denoising
 distortion: dehazing
-gpu_ids: [15]
+gpu_ids: [12,13,14,15]
 
 sde:
   max_sigma: 50
@@ -29,7 +29,7 @@ datasets:
     dataroot_LQ: /home/louanqi/pycharmp/data/ntire2023/dehazing/train/LQ
 
     use_shuffle: true
-    n_workers: 8  # per GPU
+    n_workers: 0  # per GPU
     batch_size: 8
     GT_size: 1024
     LR_size: 1024
