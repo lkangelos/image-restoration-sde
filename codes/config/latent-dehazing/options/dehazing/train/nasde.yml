@@ -3,7 +3,7 @@ name: latent-reffusion-dehazing
 use_tb_logger: true
 model: latent_denoising
 distortion: dehazing
-gpu_ids: [0]
+gpu_ids: [15]
 
 sde:
   max_sigma: 50

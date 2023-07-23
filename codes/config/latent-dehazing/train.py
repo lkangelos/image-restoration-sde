@@ -1,4 +1,5 @@
 import argparse
+from datetime import datetime
 import logging
 import math
 import os
@@ -36,7 +37,7 @@ def init_dist(backend="nccl", **kwargs):
     num_gpus = torch.cuda.device_count()  # Returns the number of GPUs available
     torch.cuda.set_device(rank % num_gpus)
     dist.init_process_group(
-        backend=backend, **kwargs
+        backend=backend, timeout=datetime.timedelta(seconds=7200), **kwargs
     )  # Initializes the default distributed process group
 
 

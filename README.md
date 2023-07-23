@@ -85,10 +85,11 @@ You can train the model following below bash scripts:
 cd codes/config/deraining
 
 # For single GPU:
-python3 train.py -opt=options/train/ir-sde.yml
+python3 train.py -opt=options/dehazing/train/nasde.yml
 
 # For distributed training, need to change the gpu_ids in option file
-python3 -m torch.distributed.launch --nproc_per_node=2 --master_poer=4321 train.py -opt=options/train/ir-sde.yml --launcher pytorch
+nohup python3 -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 train.py -opt=options/dehazing/train/nasde.yml --launcher pytorch > out.log 2>&1 &
+nohup python torchrun --standalone --nnodes=1 --nproc_per_node=4 train.py -opt=options/dehazing/train/nasde.yml > out.log 2>&1 &
 ```
 
 Then the models and training logs will save in `log/derain_sde/`. 
